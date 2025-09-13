@@ -13,9 +13,13 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/express": "github:types/express",
     "@types/node": "^24.3.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
