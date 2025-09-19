@@ -2,6 +2,9 @@ import express from 'express';
 import helmet from 'helmet' // Vai adcionar uma camada extra de proteção, ou seja, não será informado que estamos usando o express no backend.
 import { fileURLToPath } from 'url';
 import path from 'path';
+import router from './routes/index.ts';
+import produtosRouter from './routes/produtos.ts';
+import voosRouter from './routes/voos.ts';
 
 const server = express();
 
@@ -14,12 +17,9 @@ server.use(express.urlencoded({extended: true})) //O código server.use(express.
 
 server.use(express.static(path.join(__dirname, "../public"))) // Vai servir arquivos estáticos, como imagens, css, js, etc. O path.join é usado para garantir que o caminho seja construído corretamente, independentemente do sistema operacional.
 
-server.get('/', (req, res) => {
-  const nome = "Jeferson";
-  const idade = 25;
-
-  res.json({ nome, idade})
-})
+//  server.use('/produtos', produtosRouter)
+// server.use('/voos', voosRouter) ambos foram movidos para o arquivo index.ts dentro da pasta routes, que funcionará como um roteador principal.
+server.use('/', router)//Organizar as rotas do mais abrangente para o menos abrangente.
 
 server.listen(3000, ()=>{
   console.log("O servidor está rodando no link: http://localhost:3000")
