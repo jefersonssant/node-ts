@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "node --env-file=.env --import=tsx --watch ./src/server.ts",
-    "qualquer": "node qualquerArquivo"
+    "qualquer": "node qualquerArquivo",
+    "file": "node --import=tsx --watch ./src/file.ts"
   },
   "author": "jeferson",
   "license": "ISC",

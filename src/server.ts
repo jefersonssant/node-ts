@@ -5,6 +5,7 @@ import path from 'path';
 import router from './routes/index.ts';
 import produtosRouter from './routes/produtos.ts';
 import voosRouter from './routes/voos.ts';
+import { errorHandler, notFoundRequest } from './routes/errorhandler.ts';
 
 const server = express();
 
@@ -20,6 +21,8 @@ server.use(express.static(path.join(__dirname, "../public"))) // Vai servir arqu
 //  server.use('/produtos', produtosRouter)
 // server.use('/voos', voosRouter) ambos foram movidos para o arquivo index.ts dentro da pasta routes, que funcionará como um roteador principal.
 server.use('/', router)//Organizar as rotas do mais abrangente para o menos abrangente.
+server.use(notFoundRequest);
+server.use(errorHandler)
 
 server.listen(3000, ()=>{
   console.log("O servidor está rodando no link: http://localhost:3000")
